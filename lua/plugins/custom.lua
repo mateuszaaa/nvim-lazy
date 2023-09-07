@@ -1,4 +1,6 @@
 return {
+  { "akinsho/bufferline.nvim", enabled = false },
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -10,13 +12,51 @@ return {
     event = "VeryLazy",
     opts = {},
     keys = {
-      { "s", mode = { "n", "x", "o" }, "s", desc = "", },
-      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter", },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash", },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search", },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search", },
+      { "s", mode = { "n", "x", "o" }, "s", desc = "" },
+      {
+        "S",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+      {
+        "r",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Remote Flash",
+      },
+      {
+        "R",
+        mode = { "o", "x" },
+        function()
+          require("flash").treesitter_search()
+        end,
+        desc = "Treesitter Search",
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function()
+          require("flash").toggle()
+        end,
+        desc = "Toggle Flash Search",
+      },
     },
   },
+  -- {
+  --   "ruifm/gitlinker.nvim",
+  --   config = function ()
+  --      require('gitlinker').setup()
+  --   end,
+  --   keys = {
+  --     { "<leader>gu", "<cmd>lua require'gitlinker'.get_repo_url()<cr>", desc = "Git line url reference" },
+  --     { "<leader>go", "<cmd>lua require'gitlinker'.get_repo_url({action_callback = require'gitlinker.actions'.open_in_browser})<cr>", desc = "Open in browser" },
+  --   },
+  -- },
   { "tanvirtin/monokai.nvim" },
   {
     "simrat39/rust-tools.nvim",
@@ -34,7 +74,7 @@ return {
     },
   },
   {
-   "neovim/nvim-lspconfig",
+    "neovim/nvim-lspconfig",
     opts = {
       servers = {
         -- Ensure mason installs the server
@@ -48,9 +88,10 @@ return {
               },
               -- Add clippy lints for Rust.
               checkOnSave = {
+                enable = false,
                 allFeatures = true,
                 command = "check",
-                extraArgs = { "--no-deps" },
+                extraArgs = {},
               },
               procMacro = {
                 enable = false,
@@ -64,6 +105,17 @@ return {
           },
         },
       },
-    }
-  }
+    },
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "rouge8/neotest-rust",
+    },
+    opts = {
+      require("neotest-rust")({
+        args = { "--no-capture" },
+      }),
+    },
+  },
 }
