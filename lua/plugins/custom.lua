@@ -1,6 +1,7 @@
 return {
   { "akinsho/bufferline.nvim", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+  { "tpope/vim-fugitive" },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -88,13 +89,13 @@ return {
               },
               -- Add clippy lints for Rust.
               checkOnSave = {
-                enable = false,
+                enable = true,
                 allFeatures = true,
                 command = "check",
                 extraArgs = {},
               },
               procMacro = {
-                enable = false,
+                enable = true,
                 ignored = {
                   ["async-trait"] = { "async_trait" },
                   ["napi-derive"] = { "napi" },
