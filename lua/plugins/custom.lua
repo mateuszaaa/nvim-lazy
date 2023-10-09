@@ -26,6 +26,17 @@ return {
     end,
   },
   {
+    "folke/noice.nvim",
+    opts = {
+      notify = {
+        view = "mini"
+      },
+      messages = {
+        view = "mini"
+      }
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = {
       autoformat = false,
