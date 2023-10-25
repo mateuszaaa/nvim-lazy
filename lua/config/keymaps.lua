@@ -7,3 +7,4 @@ vim.keymap.set({ "n", "v" }, "L", "$", { noremap = true, silent = true })
 vim.keymap.set('n', '*',  function() require("starlite").star() end)
 
 
+vim.cmd('set noincsearch')
