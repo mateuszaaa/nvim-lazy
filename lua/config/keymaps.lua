@@ -3,3 +3,7 @@
 -- Add any additional keymaps here
 vim.keymap.set({ "n", "v" }, "H", "^", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "L", "$", { noremap = true, silent = true })
+
+vim.keymap.set('n', '*',  function() require("starlite").star() end)
+
+

@@ -1,4 +1,5 @@
 return {
+  { "ironhouzi/starlite-nvim" },
   {
     "echasnovski/mini.indentscope",
     opts = {
