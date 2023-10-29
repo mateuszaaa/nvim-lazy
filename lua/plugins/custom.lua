@@ -10,18 +10,18 @@ return {
     "smoka7/multicursors.nvim",
     event = "VeryLazy",
     dependencies = {
-        'smoka7/hydra.nvim',
+      "smoka7/hydra.nvim",
     },
     opts = {},
-    cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
     keys = {
-            {
-                mode = { 'v', 'n' },
-                '<Leader>m',
-                '<cmd>MCunderCursor<cr>',
-                desc = 'Create a selection for selected text or word under the cursor',
-            },
-        },
+      {
+        mode = { "v", "n" },
+        "<Leader>m",
+        "<cmd>MCunderCursor<cr>",
+        desc = "Create a selection for selected text or word under the cursor",
+      },
+    },
   },
   { "akinsho/bufferline.nvim", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
@@ -29,18 +29,18 @@ return {
   {
     "vincent178/nvim-github-linker",
     config = function()
-        require("nvim-github-linker").setup()
+      require("nvim-github-linker").setup()
     end,
   },
   {
     "folke/noice.nvim",
     opts = {
       notify = {
-        view = "mini"
+        view = "mini",
       },
       messages = {
-        view = "mini"
-      }
+        view = "mini",
+      },
     },
   },
   {
