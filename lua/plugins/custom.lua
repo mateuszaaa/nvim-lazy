@@ -7,21 +7,7 @@ return {
     },
   },
   {
-    "smoka7/multicursors.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "smoka7/hydra.nvim",
-    },
-    opts = {},
-    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
-    keys = {
-      {
-        mode = { "v", "n" },
-        "<Leader>m",
-        "<cmd>MCunderCursor<cr>",
-        desc = "Create a selection for selected text or word under the cursor",
-      },
-    },
+    "mg979/vim-visual-multi",
   },
   { "akinsho/bufferline.nvim", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
@@ -29,11 +15,36 @@ return {
   {
     "vincent178/nvim-github-linker",
     config = function()
-      require("nvim-github-linker").setup()
+      require("nvim-github-linker").setup({
+        default_remote = "http",
+      })
     end,
   },
   {
+    "tpope/vim-obsession",
+    enabled = true,
+  },
+  {
+    "folke/nvim-notify",
+    enabled = false,
+  },
+  {
+    "preservim/vimux",
+  },
+  {
+    "echasnovski/mini.pairs",
+    enabled = false,
+  },
+  {
+    "echasnovski/mini.surround",
+    enabled = false,
+  },
+  {
+    "sindrets/diffview.nvim",
+  },
+  {
     "folke/noice.nvim",
+    enabled = true,
     opts = {
       notify = {
         view = "mini",
@@ -41,12 +52,6 @@ return {
       messages = {
         view = "mini",
       },
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      autoformat = false,
     },
   },
   {
@@ -103,6 +108,7 @@ return {
   {
     "simrat39/rust-tools.nvim",
     keys = {
+      { "<leader>rc", "<cmd>RustOpenCargo<cr>", desc = "Open Cargo" },
       { "<leader>rs", "<cmd>LspStart<cr>", desc = "LspStart" },
       { "<leader>rR", "<cmd>LspRestart<cr>", desc = "LspRestart" },
       { "<leader>rS", "<cmd>LspStop<cr>", desc = "LspStop" },
@@ -110,6 +116,9 @@ return {
       { "<leader>rd", "<cmd>RustDebuggables<cr>", desc = "RustRunnables" },
     },
     opts = {
+      -- tools = {
+      --   executor = require("rust-tools.executors").vimux,
+      -- },
       server = {
         autostart = false,
       },
@@ -124,23 +133,23 @@ return {
           settings = {
             ["rust-analyzer"] = {
               cargo = {
-                allFeatures = true,
+                allFeatures = false,
                 loadOutDirsFromCheck = true,
                 runBuildScripts = false,
               },
               -- Add clippy lints for Rust.
               checkOnSave = {
                 enable = true,
-                allFeatures = true,
+                allFeatures = false,
                 command = "check",
                 extraArgs = {},
               },
               procMacro = {
                 enable = true,
                 ignored = {
-                  ["async-trait"] = { "async_trait" },
-                  ["napi-derive"] = { "napi" },
-                  ["async-recursion"] = { "async_recursion" },
+                  -- ["async-trait"] = { "async_trait" },
+                  -- ["napi-derive"] = { "napi" },
+                  -- ["async-recursion"] = { "async_recursion" },
                 },
               },
             },

@@ -6,5 +6,6 @@ vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.clipboard = "unnamed"
 vim.opt.mouse = ""
+vim.g.autformat = false
 
 vim.env.SKIP_WASM_BUILD = 1
