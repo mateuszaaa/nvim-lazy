@@ -9,3 +9,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.b.autoformat = false
   end,
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "solidity", "sol" },
+  callback = function()
+    require("lspconfig").solidity_ls_nomicfoundation.setup({})
+  end,
+})
