@@ -13,6 +13,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "solidity", "sol" },
   callback = function()
+    vim.b.autoformat = false
     require("lspconfig").solidity_ls_nomicfoundation.setup({})
+    vim.b.autoformat = false
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "js", "ts", "javascript", "typescript" },
+  callback = function()
+    vim.b.autoformat = false
   end,
 })
