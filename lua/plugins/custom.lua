@@ -1,4 +1,5 @@
 return {
+  { "ironhouzi/starlite-nvim" },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   { "tpope/vim-fugitive" },
   {
