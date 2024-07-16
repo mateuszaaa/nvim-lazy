@@ -1,7 +1,26 @@
 return {
   { "ironhouzi/starlite-nvim" },
-  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
-  { "tpope/vim-fugitive" },
+  -- { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+  {
+    "tpope/vim-fugitive",
+  },
+  {
+    "https://gitlab.com/itaranto/plantuml.nvim",
+    tag = "*",
+    config = function()
+      require("plantuml").setup({
+        renderer = {
+          type = "image",
+          options = {
+            prog = "feh",
+            dark_mode = true,
+            format = nil, -- Allowed values: nil, 'png', 'svg'.
+          },
+        },
+        render_on_write = true,
+      })
+    end,
+  },
   {
     "vincent178/nvim-github-linker",
     config = function()
@@ -10,37 +29,37 @@ return {
       })
     end,
   },
+  -- {
+  --   "tpope/vim-obsession",
+  --   enabled = true,
+  -- },
   {
-    "tpope/vim-obsession",
-    enabled = true,
-  },
-  {
-    "folke/nvim-notify",
+    "folke/flash",
     enabled = false,
   },
-  {
-    "echasnovski/mini.pairs",
-    enabled = false,
-  },
-  {
-    "echasnovski/mini.surround",
-    enabled = false,
-  },
-  {
-    "sindrets/diffview.nvim",
-  },
-  {
-    "folke/noice.nvim",
-    enabled = true,
-    opts = {
-      notify = {
-        view = "mini",
-      },
-      messages = {
-        view = "mini",
-      },
-    },
-  },
+  -- {
+  --   "echasnovski/mini.pairs",
+  --   enabled = false,
+  -- },
+  -- {
+  --   "echasnovski/mini.surround",
+  --   enabled = false,
+  -- },
+  -- {
+  --   "sindrets/diffview.nvim",
+  -- },
+  -- {
+  --   "folke/noice.nvim",
+  --   enabled = true,
+  --   opts = {
+  --     notify = {
+  --       view = "mini",
+  --     },
+  --     messages = {
+  --       view = "mini",
+  --     },
+  --   },
+  -- },
   {
     "mrcjkb/rustaceanvim",
     enabled = true,
@@ -56,60 +75,72 @@ return {
       { "<leader>rd", "<cmd>RustLsp debuggables<cr>", desc = "Rust debuggables" },
     },
   },
+  -- -- {
+  -- --   "williamboman/mason.nvim",
+  -- --   opts = {
+  -- --     ensure_installed = {
+  -- --       "stylua",
+  -- --       "shellcheck",
+  -- --       "shfmt",
+  -- --       "flake8",
+  -- --       "codelldb",
+  -- --     },
+  -- --   },
+  -- -- },
+  -- -- {
+  -- { "tanvirtin/monokai.nvim" },
+  -- -- {
+  -- --   "llllvvuu/neotest-foundry",
+  -- -- },
   -- {
-  --   "williamboman/mason.nvim",
-  --   opts = {
-  --     ensure_installed = {
-  --       "stylua",
-  --       "shellcheck",
-  --       "shfmt",
-  --       "flake8",
-  --       "codelldb",
-  --     },
+  --   "pwntester/octo.nvim",
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --     "nvim-tree/nvim-web-devicons",
   --   },
+  --   config = function()
+  --     require("octo").setup()
+  --   end,
   -- },
   -- {
-  { "tanvirtin/monokai.nvim" },
-  -- {
-  --   "llllvvuu/neotest-foundry",
+  --   "nvim-telescope/telescope.nvim",
+  --   config = function()
+  --     require("telescope").setup({
+  --       pickers = {
+  --         colorscheme = {
+  --           enable_preview = true,
+  --         },
+  --       },
+  --     })
+  --   end,
   -- },
-  {
-    "pwntester/octo.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("octo").setup()
-    end,
-  },
-  {
-    "hiphish/rainbow-delimiters.nvim",
-    config = function()
-      require("rainbow-delimiters.setup").setup({
-        -- strategy = {
-        --   [""] = require("rainbow_delimiters").strategy["global"],
-        --   vim = require("rainbow_delimiters").strategy["local"],
-        -- },
-        query = {
-          [""] = "rainbow-delimiters",
-          lua = "rainbow-blocks",
-        },
-        priority = {
-          [""] = 110,
-          lua = 210,
-        },
-        highlight = {
-          "RainbowDelimiterRed",
-          "RainbowDelimiterYellow",
-          "RainbowDelimiterBlue",
-          "RainbowDelimiterOrange",
-          "RainbowDelimiterGreen",
-          "RainbowDelimiterViolet",
-          "RainbowDelimiterCyan",
-        },
-      })
-    end,
-  },
+  -- {
+  --   "hiphish/rainbow-delimiters.nvim",
+  --   config = function()
+  --     require("rainbow-delimiters.setup").setup({
+  --       -- strategy = {
+  --       --   [""] = require("rainbow_delimiters").strategy["global"],
+  --       --   vim = require("rainbow_delimiters").strategy["local"],
+  --       -- },
+  --       query = {
+  --         [""] = "rainbow-delimiters",
+  --         lua = "rainbow-blocks",
+  --       },
+  --       priority = {
+  --         [""] = 110,
+  --         lua = 210,
+  --       },
+  --       highlight = {
+  --         "RainbowDelimiterRed",
+  --         "RainbowDelimiterYellow",
+  --         "RainbowDelimiterBlue",
+  --         "RainbowDelimiterOrange",
+  --         "RainbowDelimiterGreen",
+  --         "RainbowDelimiterViolet",
+  --         "RainbowDelimiterCyan",
+  --       },
+  --     })
+  --   end,
+  -- },
 }
