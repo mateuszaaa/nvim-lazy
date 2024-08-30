@@ -13,7 +13,7 @@ return {
           type = "image",
           options = {
             prog = "feh",
-            dark_mode = true,
+            dark_mode = false,
             format = nil, -- Allowed values: nil, 'png', 'svg'.
           },
         },

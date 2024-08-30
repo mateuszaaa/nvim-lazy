@@ -11,38 +11,38 @@ vim.g.autformat = false
 vim.env.SKIP_WASM_BUILD = 1
 vim.opt.guifont = "MesloLGS\\ NF:h11"
 
--- vim.g.rustaceanvim = function()
---   -- Update this path
---   --
---   local codelldb_path = vim.env.HOME .. ".local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb"
---   local liblldb_path = vim.env.HOME .. ".local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.so"
---
---   local cfg = require("rustaceanvim.config")
---   return {
---     server = {
---       settings = {
---         -- rust-analyzer language server configuration
---         ["rust-analyzer"] = {
---           checkOnSave = false,
---           cargo = {
---             allFeatures = false,
---             loadOutDirsFromCheck = true,
---             runBuildScripts = false,
---           },
---           -- Add clippy lints for Rust.
---           procMacro = {
---             enable = true,
---             ignored = {
---               -- ["async-trait"] = { "async_trait" },
---               -- ["napi-derive"] = { "napi" },
---               -- ["async-recursion"] = { "async_recursion" },
---             },
---           },
---         },
---       },
---     },
---     dap = {
---       adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
---     },
---   }
--- end
+vim.g.rustaceanvim = function()
+  -- Update this path
+  --
+  local codelldb_path = vim.env.HOME .. ".local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb"
+  local liblldb_path = vim.env.HOME .. ".local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.so"
+
+  local cfg = require("rustaceanvim.config")
+  return {
+    server = {
+      settings = {
+        -- rust-analyzer language server configuration
+        ["rust-analyzer"] = {
+          checkOnSave = false,
+          cargo = {
+            allFeatures = false,
+            loadOutDirsFromCheck = true,
+            runBuildScripts = false,
+          },
+          -- Add clippy lints for Rust.
+          procMacro = {
+            enable = true,
+            ignored = {
+              -- ["async-trait"] = { "async_trait" },
+              -- ["napi-derive"] = { "napi" },
+              -- ["async-recursion"] = { "async_recursion" },
+            },
+          },
+        },
+      },
+    },
+    dap = {
+      adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+    },
+  }
+end
