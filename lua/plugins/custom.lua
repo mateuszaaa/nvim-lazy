@@ -4,22 +4,26 @@ return {
     "tpope/vim-fugitive",
   },
   {
-    "vincent178/nvim-github-linker",
+    "ruifm/gitlinker.nvim",
+  },
+  {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
-      require("nvim-github-linker").setup({
-        default_remote = "http",
-      })
+      require("lsp_lines").setup()
     end,
+    keys = {
+      {
+        "<leader>ul",
+        function()
+          require("lsp_lines").toggle()
+        end,
+        desc = "Toggle diagnostic lines",
+      },
+    },
   },
   {
     "folke/flash",
     enabled = false,
-  },
-  {
-    "folke/snacks.nvim",
-    opts = {
-      scroll = { enabled = false },
-    },
   },
   {
     "echasnovski/mini.pairs",
@@ -48,6 +52,23 @@ return {
       messages = {
         view = "mini",
       },
+      routes = {
+        {
+          filter = {
+            event = "notify",
+            find = "Request textDocument/inlayHint failed",
+          },
+          opts = { skip = true },
+        },
+      },
+    },
+  },
+  {
+    "folke/noice.nvim",
+    opts = {
+      sources = {
+        default = { "lsp", "path" },
+      },
     },
   },
   {
@@ -64,16 +85,21 @@ return {
       { "<leader>rt", "<cmd>RustLsp testables<cr>", desc = "Rust tests" },
       { "<leader>rd", "<cmd>RustLsp debuggables<cr>", desc = "Rust debuggables" },
     },
-  },
-  {
-    "pwntester/octo.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
+    opts = {
+      server = {
+        default_settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              allFeatures = false,
+              buildScripts = {
+                enable = false,
+              },
+            },
+            checkOnSave = false,
+            procMacro = { enable = true },
+          },
+        },
+      },
     },
-    config = function()
-      require("octo").setup()
-    end,
   },
 }
