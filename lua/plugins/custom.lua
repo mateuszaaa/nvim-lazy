@@ -192,6 +192,14 @@ return {
 
       local set = vim.keymap.set
 
+      set({ "n", "x" }, "<C-S-k>", function()
+        mc.lineAddCursor(-1)
+      end)
+
+      set({ "n", "x" }, "<C-S-j>", function()
+        mc.lineAddCursor(1)
+      end)
+
       -- Add or skip adding a new cursor by matching word/selection
       set({ "n", "x" }, "<leader>n", function()
         mc.matchAddCursor(1)

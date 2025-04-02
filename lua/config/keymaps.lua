@@ -26,23 +26,19 @@ vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = t
 vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
 vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
 
-vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
-vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+-- vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+-- vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
 
-vim.keymap.del("n", "<C-down>")
-vim.keymap.del("n", "<C-up>")
-vim.keymap.del("n", "<down>")
-vim.keymap.del("n", "<up>")
-
-local mc = require("multicursor-nvim")
-vim.keymap.set({ "n", "x" }, "<up>", function()
-  mc.lineAddCursor(-1)
-end)
-vim.keymap.set({ "n", "x" }, "<down>", function()
-  local mc = require("multicursor-nvim")
-  mc.lineAddCursor(1)
-end)
-
+-- local mc = require("multicursor-nvim")
+-- vim.keymap.set({ "n", "x" }, "<up>", function()
+--   mc.lineAddCursor(-1)
+-- end)
+--
+-- vim.keymap.set({ "n", "x" }, "<down>", function()
+--   local mc = require("multicursor-nvim")
+--   mc.lineAddCursor(1)
+-- end)
+--
 -- vim.keymap.set(
 --   { "n", "x", "o" },
 --   "<leader><space>",
