@@ -11,9 +11,6 @@ vim.g.tokyonight_style = "storm"
 
 vim.env.SKIP_WASM_BUILD = 1
 vim.opt.guifont = "MesloLGS\\ NF:h11"
-vim.diagnostic.config({
-  virtual_text = false,
-})
 
 vim.g.rustaceanvim = {
   server = {
